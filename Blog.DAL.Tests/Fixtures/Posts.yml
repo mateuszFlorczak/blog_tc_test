@@ -1,0 +1,9 @@
+﻿Posts:
+  test-post:
+    Id: 1
+    Author: test
+    Content: kwa
+Comments:
+  test-post-comment:
+    PostId: 1
+    Content: wtf
