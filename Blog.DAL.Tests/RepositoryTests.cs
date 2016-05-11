@@ -33,7 +33,7 @@ namespace Blog.DAL.Tests
             post.Content = "pusto";
             repository.AddNewPost(post);
 
-            Assert.AreEqual(3, result.Count());
+            Assert.AreEqual(2, result.Count());
 
             Comment comment = new Comment();
             comment.Content = "wtfcomment";
