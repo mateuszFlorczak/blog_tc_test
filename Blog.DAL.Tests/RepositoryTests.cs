@@ -1,30 +1,12 @@
-﻿using System;
-using System.Configuration;
-using System.IO;
-using System.Linq;
-using System.Reflection;
+﻿using System.Linq;
 using Blog.DAL.Infrastructure;
 using Blog.DAL.Model;
 using Blog.DAL.Repository;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Diagnostics;
-using TDD.DbTestHelpers.Yaml;
 using TDD.DbTestHelpers.Core;
 
 namespace Blog.DAL.Tests
 {
-    public class BlogFixturesModel
-    {
-        public FixtureTable<Post> Posts { get; set; }
-        public FixtureTable<Comment> Comments { get; set; }
-    }
-    public class BlogFixtures : YamlDbFixture<BlogContext, BlogFixturesModel>
-    {
-        public BlogFixtures()
-        {
-            SetYamlFiles("Posts.yml");
-        }
-    }
     [TestClass]
     public class RepositoryTests : DbBaseTest<BlogFixtures>
     {
@@ -45,13 +27,13 @@ namespace Blog.DAL.Tests
             // act
             var result = repository.GetAllPosts();
             // assert
-            Assert.AreEqual(1, result.Count());
+            Assert.AreEqual(2, result.Count());
             var post = new Post();
             post.Author = "ja";
             post.Content = "pusto";
             repository.AddNewPost(post);
 
-            Assert.AreEqual(2, result.Count());
+            Assert.AreEqual(3, result.Count());
 
             Comment comment = new Comment();
             comment.Content = "wtfcomment";
